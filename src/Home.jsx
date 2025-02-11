@@ -43,7 +43,7 @@ if (loading) {
     return (
       <div className='flex flex-col items-center justify-center mt-20 gap-4'>
         <h1>Loading.......</h1>
-        <div className="loader"></div> {/* You can style this as a spinner */}
+        <div className="loader"></div> 
       </div>
     );
   }
