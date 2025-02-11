@@ -2,12 +2,13 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Home.css';
 
 function Home() {
 
   const [books,setBooks] = useState([]);
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(()=>{
 
@@ -23,9 +24,11 @@ function Home() {
       const data = await response.json();
       
       setBooks(data?.items);
+      setLoading(false);
 
     } catch (err) {
-      console.log(err)
+      console.log(err);
+      setLoading(false);
     }
   };
 
@@ -33,6 +36,17 @@ function Home() {
   fetchBooks();
   
 }, []);  
+
+
+
+if (loading) {
+    return (
+      <div className='flex flex-col items-center justify-center mt-20 gap-4'>
+        <h1>Loading.......</h1>
+        <div className="loader"></div> {/* You can style this as a spinner */}
+      </div>
+    );
+  }
 
 
 
