@@ -1,7 +1,5 @@
 
-import { useState } from 'react'
 import './App.css'
-import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './Home';
 import DetailPage from './DetailPage';
