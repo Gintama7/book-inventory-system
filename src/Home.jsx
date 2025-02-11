@@ -38,6 +38,11 @@ function Home() {
 }, []);  
 
 
+const deleteBook = (bookId) => {
+  
+  const updatedBooks = books.filter((book) => book.id !== bookId);
+  setBooks(updatedBooks);
+};
 
 if (loading) {
     return (
@@ -57,15 +62,28 @@ if (loading) {
     
      
       {books.map(book=>(
-        <div key={book.id} className='flex flex-col items-center gap-4 shadow-xl p-4 rounded-2xl hover:cursor-pointer hover:shadow-2xl' onClick={() => navigate(`/details/${book.id}`)}>
+        <div key={book.id} className='flex flex-col items-center gap-4 shadow-xl p-4 rounded-2xl hover:shadow-2xl' 
+        
+        >
             <div><img src={book.volumeInfo.imageLinks.thumbnail} alt="" /></div>
           <h4 className='font-bold text-xl mt-auto text-center'>{book.volumeInfo.title}</h4>
-          <h5 className='font-semibold text-lg'>{book.volumeInfo.authors?.join(', ')}</h5>          
+          <h5 className='font-semibold text-lg'>{book.volumeInfo.authors?.join(', ')}</h5>
+          <div className='flex gap-3 justify-between pt-4'>
+          
+            <button className='hover:cursor-pointer bg-[#0492c2] p-4 rounded-lg text-white' onClick={() => navigate(`/details/${book.id}`)}>
+              View Details
+            </button>
+            <button className='hover:cursor-pointer bg-red-700 p-4 rounded-lg text-white' onClick={()=>deleteBook(book.id)}>
+            Delete
+            </button>
+          </div>
+                   
         </div>
         
       ))}
       
     </div>
+    
    </div>
   )
 }
