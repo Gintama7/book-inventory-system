@@ -176,7 +176,7 @@ if (loading) {
             />
             <input
               type="text"
-              name="author"
+              name="authors"
               value={editedBook.authors}
               onChange={handleChange}
               placeholder="Author"

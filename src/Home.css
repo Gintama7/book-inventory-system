@@ -37,6 +37,7 @@
     width: 100%;
     margin: 5px 0;
     padding: 8px;
+    border:1px solid #63c5da;
   }
   
   .modal-content button {
